@@ -1,0 +1,52 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+int inverse(int a,int b)
+{
+    long long int c;
+    int i;
+    for(i=1;i<=1000;i++)
+    {
+        c=a*i%b;
+        if(c==1)
+    {
+            break;
+    }
+    }
+    return i;
+}
+int main()
+{
+    int a1,a2;
+    int b1,b2;
+    int c1,c2;
+    
+    //
+    scanf("%d %d %d %d %d %d",&a1,&a2,&b1,&b2,&c1,&c2);
+    int m;
+    m=a2*b2*c2;
+    int m1,m2,m3;
+    m1=b2*c2;
+    m2=a2*c2;
+    m3=a2*b2;
+    printf("m=%d*%d*%d=%d\n",a2,b2,c2,m);
+    printf("m1 = %d*%d = %d\n",b2,c2,m1);
+    printf("m2 = %d*%d = %d\n",a2,c2,m2);
+    printf("m3 = %d*%d = %d\n",a2,b2,m3);
+    int y1,y2,y3;
+    y1=inverse(m1,a2);
+    printf("y1=inverse of %d mod %d = %d\n",m1,a2,y1);
+    y2=inverse(m2,b2);
+    printf("y1=inverse of %d mod %d = %d\n",m2,b2,y2);
+    y3=inverse(m3,c2);
+    printf("y1=inverse of %d mod %d = %d\n",m3,c2,y3);
+    
+    int x;
+    x=a1*m1*y1+b1*m2*y2+c1*m3*y3;
+    printf("x=%d*%d*%d+%d*%d*%d+%d*%d*%d=%d",a1,m1,y1,b1,m2,y2,c1,m3,y3,x);
+    printf("\n =%d mod %d\n",x%m,m);
+    
+    
+    
+    return 0;
+}
